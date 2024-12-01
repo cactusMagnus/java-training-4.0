@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'idea'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation 'org.testng:testng:7.9.0'
+    implementation 'io.appium:java-client:9.3.0'
+}
+
+test {
+    useTestNG()
+}
