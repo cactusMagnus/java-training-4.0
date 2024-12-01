@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'idea'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    testImplementation 'org.testng:testng:7.9.0'
+    testImplementation 'org.wiremock:wiremock:3.9.1'
+
+}
+
+test {
+    useTestNG()
+}
