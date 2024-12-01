@@ -17,7 +17,7 @@ repositories {
 version = '1.0-SNAPSHOT'
 
 dependencies {
-    //add testng dependency
+    testImplementation 'org.testng:testng:7.9.0'
 }
 
 test {
