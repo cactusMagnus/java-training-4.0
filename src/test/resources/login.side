@@ -1,0 +1,101 @@
+{
+  "id": "9a52ef55-297e-4524-9c21-1147dbd59f3a",
+  "version": "2.0",
+  "name": "the-internet-login",
+  "url": "https://the-internet.herokuapp.com",
+  "tests": [{
+    "id": "6262cb2e-35a5-4cf6-b3c1-17fe9faf949d",
+    "name": "login",
+    "commands": [{
+      "id": "c46e7d6a-89f2-40c4-b38c-c45c2ac4b93b",
+      "comment": "",
+      "command": "open",
+      "target": "/login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "26bce73b-65c8-4c17-99aa-455d4e929f7a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "840x1027",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "67752531-e280-4988-a843-3f07b749c810",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//form[@id='login']/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "tomsmith"
+    }, {
+      "id": "f4596e51-c094-473c-8f70-278cb0c623a7",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='login']/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "SuperSecretPassword!"
+    }, {
+      "id": "d3ad6b54-d8f5-4aa3-b716-5f9dbee322ab",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa",
+      "targets": [
+        ["css=.fa", "css:finder"],
+        ["xpath=//form[@id='login']/button/i", "xpath:idRelative"],
+        ["xpath=//i", "xpath:position"],
+        ["xpath=//i[contains(.,' Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1fc042c7-1004-4a58-a9b8-f36f4b685973",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h2",
+      "targets": [],
+      "value": "Secure Area"
+    }, {
+      "id": "e8ede15e-66c7-437f-ba30-b8317d167d7d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.icon-2x",
+      "targets": [
+        ["css=.icon-2x", "css:finder"],
+        ["xpath=//div[@id='content']/div/a/i", "xpath:idRelative"],
+        ["xpath=//a/i", "xpath:position"],
+        ["xpath=//i[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "48c4714a-936d-46ec-bc2e-0eda8de195cc",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "e58dc31d-7c83-4ec4-8ac3-397475904d89",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["6262cb2e-35a5-4cf6-b3c1-17fe9faf949d"]
+  }],
+  "urls": ["https://the-internet.herokuapp.com/"],
+  "plugins": []
+}
