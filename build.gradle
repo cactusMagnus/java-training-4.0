@@ -23,7 +23,7 @@ dependencies {
     implementation ('io.github.bonigarcia:webdrivermanager:5.9.2') {
         exclude group: 'com.google.guava', module: 'guava'
     }
-    testImplementation 'org.testng:testng:7.9.0'
+    implementation 'org.testng:testng:7.9.0'
 }
 
 test {
