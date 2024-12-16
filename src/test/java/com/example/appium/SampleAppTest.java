@@ -14,7 +14,9 @@ import org.testng.annotations.Test;
 
 import java.nio.file.Paths;
 
+import static io.appium.java_client.service.local.flags.GeneralServerFlag.BASEPATH;
 import static java.lang.System.getenv;
+import static org.testng.Assert.assertEquals;
 
 public class SampleAppTest {
     private AppiumDriverLocalService server;
@@ -29,10 +31,14 @@ public class SampleAppTest {
         if (platform.equals("ANDROID")) {
             var options = new UiAutomator2Options()
                     .setPlatformName("Android")
-                    .setDeviceName("PUT_YOUR_DEVICE_NAME_HERE")
-                    .setApp(Paths.get(path).resolve("ApiDemos-debug.apk").toString());
+                    .setDeviceName("emulator-5554")
+                    .setApp(Paths.get(path).resolve("ApiDemos-debug.apk").toString())
+                    .setAppActivity(".view.TextFields");
 
-            server = AppiumDriverLocalService.buildService(new AppiumServiceBuilder().usingAnyFreePort());
+            server = AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
+                    .usingPort(4723)
+                    .withArgument(BASEPATH, "/wd/hub")
+                    .withIPAddress("127.0.0.1"));
             server.start();
             driver = new AndroidDriver(server, options);
 
@@ -40,12 +46,15 @@ public class SampleAppTest {
         } else {
             var options = new XCUITestOptions()
                     .setPlatformName("iOS")
-                    .setPlatformVersion("PUT_YOUR_XCODE_VERSION_HERE")
                     .setAutomationName("XCuiTest")
-                    .setDeviceName("PUT_YOUR_DEVICE_NAME_HERE")
+                    .setDeviceName("iPhone 15")
+                    .setUdid("F2EF44BD-6164-4BDC-9F67-1026AA32C068")
                     .setApp(Paths.get(path).resolve("TestApp.app.zip").toString());
 
-            server = AppiumDriverLocalService.buildService(new AppiumServiceBuilder().usingAnyFreePort());
+            server = AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
+                    .usingPort(4723)
+                    .withArgument(BASEPATH, "/wd/hub")
+                    .withIPAddress("127.0.0.1"));
             server.start();
             driver = new IOSDriver(server, options);
         }
@@ -53,9 +62,9 @@ public class SampleAppTest {
 
     @Test
     public void textFieldTest() {
-        // TODO initialise PageView and set "text" to its textField
-
-        // TODO assert that textField equals to "text"
+        PageView page = new PageView(driver);
+        page.setTextField("test");
+        assertEquals(page.getTextField(), "test", "Text Field value is incorrect");
     }
 
     @AfterClass
